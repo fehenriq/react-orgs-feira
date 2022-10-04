@@ -1,27 +1,41 @@
-import { Button, Snackbar, InputLabel } from '@material-ui/core';
+import { Button, Snackbar, InputLabel, Select, MenuItem, Menu} from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useCarrinhoContext } from 'common/context/Carrinho';
+import { usePagamentoContext } from 'common/context/Pagamento';
 import Produto from 'components/Produto';
-import { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Container, Voltar, TotalContainer, PagamentoContainer } from './styles';
 
 function Carrinho() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const { carrinho } = useCarrinhoContext();
+  const { tiposPagamento, formaPagamento, mudarFormaPagamento } = usePagamentoContext();
+  const history = useHistory();
   return (
     <Container>
-      <Voltar />
+      <Voltar onClick={() => history.goBack()} />
       <h2>
         Carrinho
       </h2>
       {carrinho.map(produto => (
-        <Produto 
+        <Produto
           {...produto}
           key={produto.id}
         />
       ))}
       <PagamentoContainer>
         <InputLabel> Forma de Pagamento </InputLabel>
+        <Select
+          value={formaPagamento.id}
+          onChange={(evento) => mudarFormaPagamento(evento.target.value)}
+        >
+          {tiposPagamento.map(pagamento => (
+            <MenuItem value={pagamento.id} key={pagamento.id}>
+              {pagamento.nome}
+            </MenuItem>
+          ))}
+        </Select>
       </PagamentoContainer>
       <TotalContainer>
         <div>
