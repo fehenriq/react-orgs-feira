@@ -38,11 +38,19 @@ export const TotalContainer = styled.section`
     justify-content: space-between;
     h2 {
       color: ${titleGray};
-      font-size: 32px;
+      font-size: 22px;
     }
     span {
-      font-size: 30px;
+      font-size: 20px;
     }
+    @media(min-width: 768px) {
+      h2 {
+        font-size: 32px;
+      }
+      span {
+        font-size: 30px;
+      }
+  }
   }
 `
 
