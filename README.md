@@ -6,13 +6,13 @@ Site de uma feira feita em React
 
 Criado 3 páginas [carrinho, feira e login]
 
-### Carrinho
-
+### Login  
+Na página de login temos um simples formulário onde é possível inserir o nome e o saldo
 
 ### Feira  
 
 
-### Login
+### Carrinho
 
 
 ## ✔️ Técnicas e tecnologias utilizadas

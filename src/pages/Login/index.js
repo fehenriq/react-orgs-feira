@@ -50,7 +50,7 @@ function Login() {
       <Button
         variant="contained"
         color="primary"
-        disabled={nome.length < 2}
+        disabled={nome.length < 2 || saldo <= 0}
         onClick={() => history.push('/feira')}
       >
         Avançar
